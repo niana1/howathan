@@ -7,6 +7,7 @@ import {
 import {Form,FormControl} from 'react-bootstrap';
 import { FaBeer } from 'react-icons/fa';
 import ReactRoundedImage from "react-rounded-image";
+
  
 const Navigation = () => {
   
@@ -29,7 +30,7 @@ const Navigation = () => {
                  paddingRight:'40px'}}>
                Reward &<br></br> Recognitions
           </h6> </Navbar.Text>
-      <Nav.Link href="#LeaderBoard"><div><h6 style=
+      {/* <Nav.Link href="#LeaderBoard"><div><h6 style=
              { {
               paddingLeft:'50px',
               paddingRight:'50px'}}>
@@ -48,9 +49,10 @@ const Navigation = () => {
       <FormControl type="text" placeholder="Search Employee" className="mr-sm-2" />
       <Button variant="dark">Search</Button>
     </Form>
-    <Nav.Link href="#picture"> <ReactRoundedImage image="/images/profile_pic2.jpeg"  roundedColor="#321124" roundedSize="1" imageWidth="50" imageHeight="50"/></Nav.Link>
+    <Nav.Link href="#picture"> <ReactRoundedImage image="/images/profile_pic2.jpeg"  roundedColor="#321124" roundedSize="1" imageWidth="50" imageHeight="50"/></Nav.Link> */}
+  </Nav>
   </Navbar>
-   </>
+  </>
  );
 };
 export default Navigation;

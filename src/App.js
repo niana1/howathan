@@ -1,11 +1,13 @@
 import './App.css';
 import Navigation from './Navbar';
+import FilterBar from './filterbar';
 import React, { useState } from "react";
 import ReactRoundedImage from "react-rounded-image";
 import LeaderBoard from './componets/LeaderBoard';
 import Filter from './componets/filter';
 import filterlogo from './filterlogo.svg';
 import { Dropdown } from 'semantic-ui-react'
+
 function App() {
  
 
@@ -15,13 +17,13 @@ function App() {
 
     <div>
     <div>
-      <Navigation></Navigation>
+      <Navigation ></Navigation>
     </div>
-    {/* <div style={{paddingTop:"100px"}}>
-      <img src={filterlogo}></img>
-    </div> */}
+  <div style={{paddingTop:"100px"}}>
+    <FilterBar></FilterBar>
+  </div>
    
-    <div style={{paddingTop:"100px"}}>
+    <div >
       <LeaderBoard></LeaderBoard>
     </div>
     </div>

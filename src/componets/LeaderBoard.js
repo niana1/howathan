@@ -1,30 +1,22 @@
-import React from "react";
+import React,{ useState} from "react";
 import {Table} from "react-bootstrap";
 
-export default function LeaderBoard() {
-  const rows=[];
+export default function LeaderBoard({response}) {
+  
 
+
+
+
+  const rows=[];
+  for (var i=0;i<response.length;i++){
   rows.push(<tr>
-        <td>arun</td>
-        <td>5</td>
-        <td>6</td>
+        <td>{response[i].name}</td>
+        <td>{response[i].citationType}</td>
+        <td>{response[i].points}</td>
       </tr>
-      
       );
-      rows.push(<tr>
-        <td>arun1</td>
-        <td>5</td>
-        <td>6</td>
-      </tr>
-      
-      );
-      rows.push(<tr>
-        <td>arunr</td>
-        <td>5</td>
-        <td>6</td>
-      </tr>
-      
-      );
+  }
+   
   
 
   return (

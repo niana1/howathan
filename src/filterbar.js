@@ -29,11 +29,12 @@ const FilterBar = (props) => {
     }
  
  return (
-    <div className="dropdown-bar" style={{display:'flex'}}>
+    <div className="dropdown-bar" style={{display:'flex',justifyContent:'space-between',padding:'0 50px'}}>
       <h1 >LeaderBoard</h1>
-      <div>
+      <div style={{display:'flex'}}>
       <DropdownButton
       alignRight
+      style={{paddingRight:'50px'}}
       title={selectedCategory}
       id="dropdown-menu-align-right"
       onSelect={handleselectorCategory}

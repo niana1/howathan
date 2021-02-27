@@ -14,7 +14,7 @@ const Navigation = () => {
  
  return (
      <>
-  <Navbar bg="light" variant="light" fixed="top">
+  <Navbar bg="light" variant="light" fixed="top" style={{display:'flex',justifyContent:'space-between'}}>
   <Navbar.Brand href="#home"><div>
       <img
         width="90"

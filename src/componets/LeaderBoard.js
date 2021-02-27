@@ -11,7 +11,7 @@ export default function LeaderBoard({response}) {
   for (var i=0;i<response.length;i++){
   rows.push(<tr>
         <td>{response[i].name}</td>
-        <td>{response[i].type}</td>
+        <td>{response[i].citations}</td>
         <td>{response[i].points}</td>
       </tr>
       );

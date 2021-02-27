@@ -9,62 +9,116 @@ import filterlogo from './filterlogo.svg';
 import { Dropdown } from 'semantic-ui-react'
 
 function App() {
+  const [array1,setArray]=useState({array:["",""]})
+  
+  const array=array1.array
+
+ console.log("came here ------>>>")
  
-  const onSelectCategory=(e)=>{
-   
+ 
+ const filtering=(array)=>{
+  var copy=[...result];
+  
+  if(array[0]===""){
+
+  }
+  else{
+    var copy1=[...copy]
+    var e=array[0]
     if(e=="Learning Mindset") {
-      var res=result.filter(e1=>  e1.type==="learning mindset");
-      setResponse(res);    
+      copy=copy.filter(e1=>  e1.type==="Learning Mindset");
+      //setResponse(res);    
     }
 
     else if(e=="Engaging with Openness") {
-      var res=result.filter(e1=>e1.type==="Engaging with Openness");
-      setResponse(res);
+      copy=copy.filter(e1=>e1.type==="Engaging with Openness");
+    //  setResponse(res);
     }
 
     else if(e=="Inclusive Collaboration") {
-      var res=result.filter(e1=>e1.type==="Inclusive Collaboration");
-      setResponse(res);
+      copy=copy.filter(e1=>e1.type==="Inclusive Collaboration");
+      //setResponse(res);
     }
 
     else if(e=="Partnering for Client Impact") {
-      var res=result.filter(e1=>e1.type==="Partnering for Client Impact");
-      setResponse(res);
+      copy=copy.filter(e1=>e1.type==="Partnering for Client Impact");
+     // setResponse(res);
     }
 
     else{
-      var res=result.filter(e1=>e1.type==="Embracing the Future");
-      setResponse(res);
+      copy=copy.filter(e1=>e1.type==="Embracing the Future");
+      //setResponse(res);
     }
-   }
-  const onSelectDate=(e)=>{
+
+  }
+
+  if(array[1]===""){
+
+  }
+  else{
+    var e=array[1]
     const currentDate = new Date();
     const currentMonth=currentDate.getMonth();
     const currentYear=currentDate.getYear();
    // console.log(currentMonth);
     if(e==="Current Month") {
-      for(var i=0;i<data.length;i++) {
-        var responseDate = new Date(data[i].timestamp);
+      for(var i=0;i<copy.length;i++) {
+        var responseDate = new Date(copy[i].timestamp);
         var responseMonth = responseDate.getMonth();
         if(currentMonth===responseMonth) {
-         var res1=data.filter(e2=> new Date(e2.timestamp).getMonth()===responseMonth);
-         console.log(responseMonth);  
-         setResponse(res1);
+         copy=copy.filter(e2=> new Date(e2.timestamp).getMonth()===responseMonth);
+         console.log('HI......................',responseMonth);  
+         //setResponse(res1);
+        }
+        else {
+         copy="";
         }
       }
     }
-    else {
-      for(var i=0;i<data.length;i++) {
-        var responseDate = new Date(data[i].timestamp);
+    else {  
+      for(var i=0;i<copy.length;i++) {
+        var responseDate = new Date(copy[i].timestamp);
         var responseYear = responseDate.getYear();
         if(currentYear===responseYear) {
-         var res1=data.filter(e2=> new Date(e2.timestamp).getYear()===responseYear);
+         copy=copy.filter(e2=> new Date(e2.timestamp).getYear()===responseYear);
          console.log(responseYear);  
-         setResponse(res1);
+         //setResponse(res1);
         }
       }
      }
+  }
+setResponse(copy)
+ }
+
+  const onSelectCategory=(e)=>{
+   
+    if(e==="By Category"){
+      array[0]="";
+      
+    }
+    else{
+      array[0]=e;
+    }
+    console.log(array)
+    filtering(array)
+    console.log(array)
+    setArray({array:array})
    }
+  const onSelectDate=(e)=>{
+    console.log("------------///")
+    console.log(array)
+    console.log("------------------////")
+    if(e==="By Time"){
+      array[1]="";
+    }
+    else{
+      array[1]=e;
+    }
+    filtering(array)
+    setArray({array:array})
+   }
+   
+   
    const data=[  { 
     "id": "60392bb6a968fe2acaee0aa9",
     "name": "Akhil",
@@ -72,34 +126,43 @@ function App() {
     "citationType": "p",
     "points": 1,
     "timestamp": "2021-02-26T17:11:18.363+00:00",
-    "type": "learning mindset"
+    "type": "Learning Mindset"
 },
 {
   "id": "60392bb6a968fe2acaee0aa9",
   "name": "Akhil",
   "email": "akhil.reddy@publicisgroupe.net",
-  "citationType": "c",
+  "citationType": "p",
   "points": 3,
   "timestamp": "2021-02-26T17:11:18.363+00:00",
-  "type": "learning mindset"
+  "type": "Learning Mindset"
 },
 {
   "id": "60392bb6a968fe2acaee0aa9",
   "name": "Akhil",
   "email": "akhil.reddy@publicisgroupe.net",
   "citationType": "c",
-  "points": 2,
+  "points": 0,
   "timestamp": "2021-04-26T17:11:18.363+00:00",
-  "type": "learning mindset"
+  "type": "Learning Mindset"
 },
 {
     "id": "60392c5ba968fe2acaee0aac",
     "name": "sai",
     "email": "napa.manoj@publicisgroupe.net",
     "citationType": "p",
-    "points": 8,
+    "points": 12,
     "timestamp": "2021-03-26T17:14:03.955+00:00",
-    "type": "client impact"
+    "type": "Partnering for Client Impact"
+},
+{
+  "id": "60392bb6a968fe2acaee0aa9",
+  "name": "Akhil",
+  "email": "akhil.reddy@publicisgroupe.net",
+  "citationType": "c",
+  "points": 0,
+  "timestamp":"2021-04-26T17:11:18.363+00:00",
+  "type": "Learning Mindset"
 }
 ];
 
@@ -111,49 +174,63 @@ function App() {
       "citationType": "p",
       "points": 1,
       "timestamp": "2021-02-26T17:11:18.363+00:00",
-      "type": "learning mindset"
+      "type": "Learning Mindset"
   },
   {
     "id": "60392bb6a968fe2acaee0aa9",
     "name": "Akhil",
     "email": "akhil.reddy@publicisgroupe.net",
-    "citationType": "c",
+    "citationType": "p",
     "points": 3,
     "timestamp": "2021-02-26T17:11:18.363+00:00",
-    "type": "learning mindset"
+    "type": "Learning Mindset"
   },
   {
     "id": "60392bb6a968fe2acaee0aa9",
     "name": "Akhil",
     "email": "akhil.reddy@publicisgroupe.net",
     "citationType": "c",
-    "points": 2,
+    "points": 0,
     "timestamp": "2021-04-26T17:11:18.363+00:00",
-    "type": "learning mindset"
+    "type": "Learning Mindset"
   },
   {
       "id": "60392c5ba968fe2acaee0aac",
       "name": "sai",
       "email": "napa.manoj@publicisgroupe.net",
       "citationType": "p",
-      "points": 8,
+      "points": 12,
       "timestamp": "2021-03-26T17:14:03.955+00:00",
-      "type": "client impact"
+      "type": "Partnering for Client Impact"
+  },
+  {
+    "id": "60392bb6a968fe2acaee0aa9",
+    "name": "Akhil",
+    "email": "akhil.reddy@publicisgroupe.net",
+    "citationType": "c",
+    "points": 0,
+    "timestamp": "2021-02-26T17:11:18.363+00:00",
+    "type": "Learning Mindset"
   }
 ])
 var result = [];
-data.reduce(function(res, value) {
-
-  if (!res[value.email]) {
-    res[value.email] = { email: value.email, points: 0,type:value.type,name:value.name };
-    result.push(res[value.email])
+data.reduce(function(res, value) { 
+  if (!res[value.email+value.type] ) {
+    res[value.email+value.type] = { email: value.email, points: 0,citations:0,type:value.type,name:value.name,timestamp:value.timestamp};  
+    result.push(res[value.email+value.type])
+    
   }
-
-  res[value.email].points += value.points;
+  if(value.citationType=="c")
+  {
+  res[value.email+value.type].citations += 1;
+  }
+  else{
+  res[value.email+value.type].points += value.points;
+  } 
   return res;
 }, {});
-
 console.log("this is result",result);
+
 
 
   return (

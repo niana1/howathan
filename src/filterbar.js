@@ -29,7 +29,9 @@ const FilterBar = (props) => {
     }
  
  return (
-    <>
+    <div className="dropdown-bar" style={{display:'flex'}}>
+      <h1 >LeaderBoard</h1>
+      <div>
       <DropdownButton
       alignRight
       title={selectedCategory}
@@ -56,35 +58,9 @@ const FilterBar = (props) => {
               <Dropdown.Item eventKey="Current Year">Current Year</Dropdown.Item>
              </DropdownButton>
              
-            {/* <Dropdown>
-           <Dropdown.Toggle variant="success" id="dropdown-basic">
-           Category
-          </Dropdown.Toggle>
+             </div>
 
-           <Dropdown.Menu>
-          <Dropdown.Item href="#/action-1">Learning Mindset</Dropdown.Item>
-           <Dropdown.Item href="#/action-2">Engaging with Openness</Dropdown.Item>
-           <Dropdown.Item href="#/action-3">Inclusive Collaboration</Dropdown.Item>
-           <Dropdown.Item href="#/action-1">Partnering for Client Impact</Dropdown.Item>
-           <Dropdown.Item href="#/action-2">Embracing the Future</Dropdown.Item>
-             </Dropdown.Menu>
-             </Dropdown>
-
-            </th>
-            <th>
-            <Dropdown>
-           <Dropdown.Toggle variant="success" id="dropdown-basic">
-            Period
-          </Dropdown.Toggle>
-
-           <Dropdown.Menu>
-          <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-           <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-           <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-             </Dropdown.Menu>
-             </Dropdown> */}
-
-  </>
+  </div>
  );
 };
 export default FilterBar;

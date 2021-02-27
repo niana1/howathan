@@ -4,11 +4,23 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
+var  func1=()=>{
+  console.log("in funcccc")
+   axios.get(`https://59542f849ae7.ngrok.io/getFilter`).then((res)=>{
+     console.log("--------")
+     console.log(res.data)
+     ReactDOM.render(
+      <App data={res.data}/>,
+    document.getElementById('root')
+  );
+    // changeApiData({data:[...res.data]})
+   }).catch((e)=>{
+       console.log("dell")
+   })
+ }
+ func1();
 
-ReactDOM.render(
-    <App />,
-  document.getElementById('root')
-);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

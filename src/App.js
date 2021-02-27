@@ -1,14 +1,20 @@
 import './App.css';
 import Navigation from './Navbar';
 import FilterBar from './filterbar';
-import React, { useState } from "react";
+
+import React, { useEffect, useState } from 'react';
 import ReactRoundedImage from "react-rounded-image";
 import LeaderBoard from './componets/LeaderBoard';
 import Filter from './componets/filter';
 import filterlogo from './filterlogo.svg';
 import { Dropdown } from 'semantic-ui-react'
+import axios from 'axios';
+function App({data}) {
 
-function App() {
+  const [apidata,changeApiData]=useState({data:[...data]});
+  
+ 
+ 
   const [array1,setArray]=useState({array:["",""]})
   
   const array=array1.array
@@ -17,6 +23,25 @@ function App() {
  
  
  const filtering=(array)=>{
+  var result = [];
+    data.reduce(function(res, value) { 
+    if (!res[value.email+value.type] ) {
+      res[value.email+value.type] = { email: value.email, points: 0,citations:0,type:value.type,name:value.name,timestamp:value.timestamp};  
+      result.push(res[value.email+value.type])
+      
+    }
+    if(value.citationType=="c")
+    {
+    res[value.email+value.type].citations += 1;
+    }
+    else{
+    res[value.email+value.type].points += value.points;
+    } 
+    return res;
+  }, {});
+  console.log("this is result",result);
+  
+
   var copy=[...result];
   
   if(array[0]===""){
@@ -90,7 +115,8 @@ function App() {
       }
      }
   }
-setResponse(copy)
+//setResponse(copy)
+changeApiData({data:[...copy]})
  }
 
   const onSelectCategory=(e)=>{
@@ -122,52 +148,7 @@ setResponse(copy)
    }
    
    
-   const data=[  { 
-    "id": "60392bb6a968fe2acaee0aa9",
-    "name": "Akhil",
-    "email": "akhil.reddy@publicisgroupe.net",
-    "citationType": "p",
-    "points": 1,
-    "timestamp": "2021-02-26T17:11:18.363+00:00",
-    "type": "Learning Mindset"
-},
-{
-  "id": "60392bb6a968fe2acaee0aa9",
-  "name": "Akhil",
-  "email": "akhil.reddy@publicisgroupe.net",
-  "citationType": "p",
-  "points": 3,
-  "timestamp": "2021-02-26T17:11:18.363+00:00",
-  "type": "Learning Mindset"
-},
-{
-  "id": "60392bb6a968fe2acaee0aa9",
-  "name": "Akhil",
-  "email": "akhil.reddy@publicisgroupe.net",
-  "citationType": "c",
-  "points": 0,
-  "timestamp": "2021-04-26T17:11:18.363+00:00",
-  "type": "Learning Mindset"
-},
-{
-    "id": "60392c5ba968fe2acaee0aac",
-    "name": "sai",
-    "email": "napa.manoj@publicisgroupe.net",
-    "citationType": "p",
-    "points": 12,
-    "timestamp": "2021-03-26T17:14:03.955+00:00",
-    "type": "Partnering for Client Impact"
-},
-{
-  "id": "60392bb6a968fe2acaee0aa9",
-  "name": "Akhil",
-  "email": "akhil.reddy@publicisgroupe.net",
-  "citationType": "c",
-  "points": 0,
-  "timestamp":"2021-04-26T17:11:18.363+00:00",
-  "type": "Learning Mindset"
-}
-];
+
 
   const [response,setResponse]=useState(
     [   { 
@@ -216,23 +197,6 @@ setResponse(copy)
     "type": "Learning Mindset"
   }
 ])
-var result = [];
-data.reduce(function(res, value) { 
-  if (!res[value.email+value.type] ) {
-    res[value.email+value.type] = { email: value.email, points: 0,citations:0,type:value.type,name:value.name,timestamp:value.timestamp};  
-    result.push(res[value.email+value.type])
-    
-  }
-  if(value.citationType=="c")
-  {
-  res[value.email+value.type].citations += 1;
-  }
-  else{
-  res[value.email+value.type].points += value.points;
-  } 
-  return res;
-}, {});
-console.log("this is result",result);
 
 
 
@@ -247,7 +211,7 @@ console.log("this is result",result);
   </div>
    
     <div style={{paddingTop:"50px"}}>
-      <LeaderBoard response={response}></LeaderBoard>
+      <LeaderBoard response={apidata.data}></LeaderBoard> 
     </div>
     </div>
     

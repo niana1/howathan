@@ -10,51 +10,87 @@ import { Dropdown } from 'semantic-ui-react'
 
 function App() {
  
-  const onSelect=(e)=>{
-     console.log(e);
-     if(e=="Learning Mindset"){
-    var res=data.filter(e1=>e1.type=="learning mindset");
-    //console.log("jkl",response);
-    setResponse(res);
-     
-  }
-    else if(e=="Engaging with Openness"){
-    var res=data.filter(e1=>e1.type=="Engaging with Openness");
-    setResponse(res);
-  }
-    else if(e=="Inclusive Collaboration"){
-    var res=data.filter(e1=>e1.type=="Inclusive Collaboration");
-    setResponse(res);}
-    else if(e=="Partnering for Client Impact"){
-    var res=data.filter(e1=>e1.type=="client impact");
-    console.log("in ci",response);
-    setResponse(res);}
+  const onSelectCategory=(e)=>{
+   
+    if(e=="Learning Mindset") {
+      var res=result.filter(e1=>  e1.type==="learning mindset");
+      setResponse(res);    
+    }
+
+    else if(e=="Engaging with Openness") {
+      var res=result.filter(e1=>e1.type==="Engaging with Openness");
+      setResponse(res);
+    }
+
+    else if(e=="Inclusive Collaboration") {
+      var res=result.filter(e1=>e1.type==="Inclusive Collaboration");
+      setResponse(res);
+    }
+
+    else if(e=="Partnering for Client Impact") {
+      var res=result.filter(e1=>e1.type==="Partnering for Client Impact");
+      setResponse(res);
+    }
+
     else{
-    var res=data.filter(e1=>e1.type=="Embracing the Future");
-    setResponse(res);}
-    //   if(e="opt-1"){
-  //    var responseFiltered=[{
-  //     "id": "60392bb6a968fe2acaee0aa9",
-  //     "name": "Akhil",
-  //     "email": "napa.manoj@publicisgroupe.net",
-  //     "citationType": "c",
-  //     "points": 0,
-  //     "timestamp": "2021-02-26T17:11:18.363+00:00",
-  //     "type": "learning mindset"
-  // }]
- 
-       }
-      
-    
-  
-  const data=[  {
+      var res=result.filter(e1=>e1.type==="Embracing the Future");
+      setResponse(res);
+    }
+   }
+  const onSelectDate=(e)=>{
+    const currentDate = new Date();
+    const currentMonth=currentDate.getMonth();
+    const currentYear=currentDate.getYear();
+   // console.log(currentMonth);
+    if(e==="Current Month") {
+      for(var i=0;i<data.length;i++) {
+        var responseDate = new Date(data[i].timestamp);
+        var responseMonth = responseDate.getMonth();
+        if(currentMonth===responseMonth) {
+         var res1=data.filter(e2=> new Date(e2.timestamp).getMonth()===responseMonth);
+         console.log(responseMonth);  
+         setResponse(res1);
+        }
+      }
+    }
+    else {
+      for(var i=0;i<data.length;i++) {
+        var responseDate = new Date(data[i].timestamp);
+        var responseYear = responseDate.getYear();
+        if(currentYear===responseYear) {
+         var res1=data.filter(e2=> new Date(e2.timestamp).getYear()===responseYear);
+         console.log(responseYear);  
+         setResponse(res1);
+        }
+      }
+     }
+   }
+   const data=[  { 
     "id": "60392bb6a968fe2acaee0aa9",
     "name": "Akhil",
-    "email": "napa.manoj@publicisgroupe.net",
-    "citationType": "c",
-    "points": 0,
+    "email": "akhil.reddy@publicisgroupe.net",
+    "citationType": "p",
+    "points": 1,
     "timestamp": "2021-02-26T17:11:18.363+00:00",
     "type": "learning mindset"
+},
+{
+  "id": "60392bb6a968fe2acaee0aa9",
+  "name": "Akhil",
+  "email": "akhil.reddy@publicisgroupe.net",
+  "citationType": "c",
+  "points": 3,
+  "timestamp": "2021-02-26T17:11:18.363+00:00",
+  "type": "learning mindset"
+},
+{
+  "id": "60392bb6a968fe2acaee0aa9",
+  "name": "Akhil",
+  "email": "akhil.reddy@publicisgroupe.net",
+  "citationType": "c",
+  "points": 2,
+  "timestamp": "2021-04-26T17:11:18.363+00:00",
+  "type": "learning mindset"
 },
 {
     "id": "60392c5ba968fe2acaee0aac",
@@ -62,19 +98,38 @@ function App() {
     "email": "napa.manoj@publicisgroupe.net",
     "citationType": "p",
     "points": 8,
-    "timestamp": "2021-02-26T17:14:03.955+00:00",
+    "timestamp": "2021-03-26T17:14:03.955+00:00",
     "type": "client impact"
 }
 ];
+
   const [response,setResponse]=useState(
-    [  {
+    [   { 
       "id": "60392bb6a968fe2acaee0aa9",
       "name": "Akhil",
-      "email": "napa.manoj@publicisgroupe.net",
-      "citationType": "c",
-      "points": 0,
+      "email": "akhil.reddy@publicisgroupe.net",
+      "citationType": "p",
+      "points": 1,
       "timestamp": "2021-02-26T17:11:18.363+00:00",
       "type": "learning mindset"
+  },
+  {
+    "id": "60392bb6a968fe2acaee0aa9",
+    "name": "Akhil",
+    "email": "akhil.reddy@publicisgroupe.net",
+    "citationType": "c",
+    "points": 3,
+    "timestamp": "2021-02-26T17:11:18.363+00:00",
+    "type": "learning mindset"
+  },
+  {
+    "id": "60392bb6a968fe2acaee0aa9",
+    "name": "Akhil",
+    "email": "akhil.reddy@publicisgroupe.net",
+    "citationType": "c",
+    "points": 2,
+    "timestamp": "2021-04-26T17:11:18.363+00:00",
+    "type": "learning mindset"
   },
   {
       "id": "60392c5ba968fe2acaee0aac",
@@ -82,10 +137,24 @@ function App() {
       "email": "napa.manoj@publicisgroupe.net",
       "citationType": "p",
       "points": 8,
-      "timestamp": "2021-02-26T17:14:03.955+00:00",
+      "timestamp": "2021-03-26T17:14:03.955+00:00",
       "type": "client impact"
   }
 ])
+var result = [];
+data.reduce(function(res, value) {
+
+  if (!res[value.email]) {
+    res[value.email] = { email: value.email, points: 0,type:value.type,name:value.name };
+    result.push(res[value.email])
+  }
+
+  res[value.email].points += value.points;
+  return res;
+}, {});
+
+console.log("this is result",result);
+
 
   return (
 
@@ -94,7 +163,7 @@ function App() {
       <Navigation ></Navigation>
     </div>
   <div style={{paddingTop:"100px"}}>
-    <FilterBar handleSelect={onSelect}></FilterBar>
+    <FilterBar handleSelectCategory={onSelectCategory} handleSelectDate={onSelectDate}></FilterBar>
   </div>
    
     <div style={{paddingTop:"50px"}}>
@@ -102,29 +171,6 @@ function App() {
     </div>
     </div>
     
-    // <div className="app-wrapper">
-    // <Navigation/> 
-    //   <form class="form-container">
-    //     <h3>Your Rewards</h3>
-    //   <div className="trophy-container">
-    //     <p>
-    //       Trophies Earned: 50 x  <img 
-    //     width="40"
-    //     height="40"
-    //     src="/images/trophy.png"
-    //   ></img>
-    //       </p>
-    //   <p>Trophies Left for this month: 10 x <img 
-    //     width="40"
-    //     height="40"
-    //     src="/images/trophy.png"
-    //   ></img></p>
-    //   </div>
-    //   </form>
-    //   <div class="form-review">
-    //     <h3 style={{paddingLeft:"400px"}}>Recognitions</h3>
-    //   </div>
-    // </div>
   
   );
 }

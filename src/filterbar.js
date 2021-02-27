@@ -10,10 +10,17 @@ import {Form,FormControl} from 'react-bootstrap';
 import { FaBeer } from 'react-icons/fa';
 import ReactRoundedImage from "react-rounded-image";
  
-const FilterBar = ({handleSelect}) => {
+const FilterBar = (props) => {
     const [selectedCategory, setSelectedCategory]=useState("By Category");
     const [selectedTime, setSelectedTime]=useState("By Time");
-
+    const handleselectorCategory=(e)=>{
+       {handleSelect2(e)}
+       {props.handleSelectCategory(e)}
+    }
+    const handleSelectorDate=(e) =>{
+      {handleSelect3(e)}
+      {props.handleSelectDate(e)}
+    }
     const handleSelect2=(e)=>{
       setSelectedCategory(e)
     }
@@ -27,10 +34,8 @@ const FilterBar = ({handleSelect}) => {
       alignRight
       title={selectedCategory}
       id="dropdown-menu-align-right"
-      onSelect={handleSelect2}
-      onSelect={handleSelect}
-    
-        >
+      onSelect={handleselectorCategory}
+      >
               <Dropdown.Item eventKey="Learning Mindset">Learning Mindset</Dropdown.Item>
               <Dropdown.Item eventKey="Engaging with Openness">Engaging with Openness</Dropdown.Item>
               <Dropdown.Item eventKey="Inclusive Collaboration">Inclusive Collaboration</Dropdown.Item>
@@ -42,12 +47,13 @@ const FilterBar = ({handleSelect}) => {
       alignRight
       title={selectedTime}
       id="dropdown-menu-align-right"
-      onSelect={handleSelect3}
+      onSelect={handleSelectorDate}
     
         >
-              <Dropdown.Item eventKey="3 Months">3 Months</Dropdown.Item>
-              <Dropdown.Item eventKey="6 Months">6 Months</Dropdown.Item>
-              <Dropdown.Item eventKey="This Year">This Year</Dropdown.Item>
+              {/* <Dropdown.Item eventKey="3 Months">3 Months</Dropdown.Item>
+              <Dropdown.Item eventKey="6 Months">6 Months</Dropdown.Item> */}
+              <Dropdown.Item eventKey="Current Month">Current Month</Dropdown.Item>
+              <Dropdown.Item eventKey="Current Year">Current Year</Dropdown.Item>
              </DropdownButton>
              
             {/* <Dropdown>

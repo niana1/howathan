@@ -45,9 +45,12 @@ function App() {
      // setResponse(res);
     }
 
-    else{
+    else if(e==="Embracing the Future"){
       copy=copy.filter(e1=>e1.type==="Embracing the Future");
       //setResponse(res);
+    }
+    else {
+      copy=copy.filter(e1=>e1.type==="Recognition");
     }
 
   }

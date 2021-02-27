@@ -13,19 +13,24 @@ function App() {
   const onSelect=(e)=>{
      console.log(e);
      if(e=="Learning Mindset"){
-    var res=response.filter(e1=>e1.type=="learning mindset");
+    var res=data.filter(e1=>e1.type=="learning mindset");
+    //console.log("jkl",response);
+    setResponse(res);
+     
+  }
+    else if(e=="Engaging with Openness"){
+    var res=data.filter(e1=>e1.type=="Engaging with Openness");
+    setResponse(res);
+  }
+    else if(e=="Inclusive Collaboration"){
+    var res=data.filter(e1=>e1.type=="Inclusive Collaboration");
     setResponse(res);}
-    if(e=="Engaging with Openness"){
-    var res=response.filter(e1=>e1.type=="Engaging with Openness");
+    else if(e=="Partnering for Client Impact"){
+    var res=data.filter(e1=>e1.type=="client impact");
+    console.log("in ci",response);
     setResponse(res);}
-    if(e=="Inclusive Collaboration"){
-    var res=response.filter(e1=>e1.type=="Inclusive Collaboration");
-    setResponse(res);}
-    if(e=="Partnering for Client Impact"){
-    var res=response.filter(e1=>e1.type=="client impact");
-    setResponse(res);}
-    if(e=="Embracing the Future"){
-    var res=response.filter(e1=>e1.type=="Embracing the Future");
+    else{
+    var res=data.filter(e1=>e1.type=="Embracing the Future");
     setResponse(res);}
     //   if(e="opt-1"){
   //    var responseFiltered=[{
@@ -42,7 +47,25 @@ function App() {
       
     
   
-
+  const data=[  {
+    "id": "60392bb6a968fe2acaee0aa9",
+    "name": "Akhil",
+    "email": "napa.manoj@publicisgroupe.net",
+    "citationType": "c",
+    "points": 0,
+    "timestamp": "2021-02-26T17:11:18.363+00:00",
+    "type": "learning mindset"
+},
+{
+    "id": "60392c5ba968fe2acaee0aac",
+    "name": "sai",
+    "email": "napa.manoj@publicisgroupe.net",
+    "citationType": "p",
+    "points": 8,
+    "timestamp": "2021-02-26T17:14:03.955+00:00",
+    "type": "client impact"
+}
+];
   const [response,setResponse]=useState(
     [  {
       "id": "60392bb6a968fe2acaee0aa9",

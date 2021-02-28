@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 var  func1=()=>{
   console.log("in funcccc")
-   axios.get(`https://59542f849ae7.ngrok.io/getFilter`).then((res)=>{
+   axios.get(`https://f4d363204490.ngrok.io/getFilter`).then((res)=>{
      console.log("--------")
      console.log(res.data)
      ReactDOM.render(
@@ -20,7 +20,10 @@ var  func1=()=>{
    })
  }
  func1();
-
+ ReactDOM.render(
+  <h1>Loading please wait</h1>,
+document.getElementById('root')
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

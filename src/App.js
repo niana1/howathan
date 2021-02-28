@@ -9,13 +9,33 @@ import Filter from './componets/filter';
 import filterlogo from './filterlogo.svg';
 import { Dropdown } from 'semantic-ui-react'
 import axios from 'axios';
+import Profile from './componets/profile/index';
 function App({data}) {
 
-  const [apidata,changeApiData]=useState({data:[...data]});
-  
- 
- 
+  const [profileScreen,changeScreen]=useState({email:"",flag:false});
   const [array1,setArray]=useState({array:["",""]})
+  const [apidata,changeApiData]=useState({data:[...data]});
+
+ var  changeScreenfunction =(email) =>{
+    changeScreen({email:email,flag:true})
+  }
+var backToScreen1 =()=>{
+  changeScreen({email:"",flag:false})
+}
+
+  
+  
+ if(profileScreen.flag===true){
+   console.log("should come here ")
+   console.log(profileScreen.email)
+   return(<Profile
+     email={profileScreen.email}
+     backFunction={backToScreen1}
+     />
+   );
+ }
+ 
+ 
   
   const array=array1.array
 
@@ -150,55 +170,7 @@ changeApiData({data:[...copy]})
    
 
 
-  const [response,setResponse]=useState(
-    [   { 
-      "id": "60392bb6a968fe2acaee0aa9",
-      "name": "Akhil",
-      "email": "akhil.reddy@publicisgroupe.net",
-      "citationType": "p",
-      "points": 1,
-      "timestamp": "2021-02-26T17:11:18.363+00:00",
-      "type": "Learning Mindset"
-  },
-  {
-    "id": "60392bb6a968fe2acaee0aa9",
-    "name": "Akhil",
-    "email": "akhil.reddy@publicisgroupe.net",
-    "citationType": "p",
-    "points": 3,
-    "timestamp": "2021-02-26T17:11:18.363+00:00",
-    "type": "Learning Mindset"
-  },
-  {
-    "id": "60392bb6a968fe2acaee0aa9",
-    "name": "Akhil",
-    "email": "akhil.reddy@publicisgroupe.net",
-    "citationType": "c",
-    "points": 0,
-    "timestamp": "2021-04-26T17:11:18.363+00:00",
-    "type": "Learning Mindset"
-  },
-  {
-      "id": "60392c5ba968fe2acaee0aac",
-      "name": "sai",
-      "email": "napa.manoj@publicisgroupe.net",
-      "citationType": "p",
-      "points": 12,
-      "timestamp": "2021-03-26T17:14:03.955+00:00",
-      "type": "Partnering for Client Impact"
-  },
-  {
-    "id": "60392bb6a968fe2acaee0aa9",
-    "name": "Akhil",
-    "email": "akhil.reddy@publicisgroupe.net",
-    "citationType": "c",
-    "points": 0,
-    "timestamp": "2021-02-26T17:11:18.363+00:00",
-    "type": "Learning Mindset"
-  }
-])
-
-
+  
 
   return (
 
@@ -211,7 +183,10 @@ changeApiData({data:[...copy]})
   </div>
    
     <div style={{paddingTop:"50px"}}>
-      <LeaderBoard response={apidata.data}></LeaderBoard> 
+      <LeaderBoard 
+      response={apidata.data}
+      changeScreenfunction={changeScreenfunction}
+      ></LeaderBoard> 
     </div>
     </div>
     

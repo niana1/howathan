@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 var  func1=()=>{
   console.log("in funcccc")
-   axios.get(`https://f4d363204490.ngrok.io/getFilter`).then((res)=>{
+   axios.get(`https://cb98e69f2bc0.ngrok.io/getFilter`).then((res)=>{
      console.log("--------")
      console.log(res.data)
      ReactDOM.render(
@@ -20,10 +20,29 @@ var  func1=()=>{
    })
  }
  func1();
- ReactDOM.render(
-  <h1>Loading please wait</h1>,
-document.getElementById('root')
-);
+// const data=[  {
+//   "id": "60392bb6a968fe2acaee0aa9",
+//   "name": "sai",
+//   "email": "napa.manoj@publicisgroupe.net",
+//   "citationType": "c",
+//   "points": 0,
+//   "timestamp": "2021-02-26T17:11:18.363+00:00",
+//   "type": "learning mindset"
+// },
+// {
+//   "id": "60392c5ba968fe2acaee0aac",
+//   "name": "sai",
+//   "email": "napa.manoj@publicisgroupe.net",
+//   "citationType": "p",
+//   "points": 8,
+//   "timestamp": "2021-02-26T17:14:03.955+00:00",
+//   "type": "client impact"
+// }
+// ];
+//  ReactDOM.render(
+//   <App data={data}/>,
+// document.getElementById('root')
+// );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

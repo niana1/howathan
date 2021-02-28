@@ -1,0 +1,23 @@
+.citation-wrapper{
+    padding-left:30px;
+    padding-right:30px;
+    margin-left: 30px;
+    border-width:5px;
+    display:flex;
+    padding-top:50px;
+}
+
+.cell-wrapper{
+    padding-left:40px;
+}
+
+.recognition-container
+ {  min-height: 30vh;
+  padding-top: 20px;
+  padding-left: 8px;
+  padding-right: 5px;
+  border-radius: 10px;
+  background: #dfdfdf;
+  border-width: 30px;
+  margin:30px;
+}

@@ -10,6 +10,7 @@ import filterlogo from './filterlogo.svg';
 import { Dropdown } from 'semantic-ui-react'
 import axios from 'axios';
 import Profile from './componets/profile/index';
+import { removeData } from 'jquery';
 function App({data}) {
 
   const [profileScreen,changeScreen]=useState({email:"",flag:false});
@@ -44,6 +45,7 @@ var backToScreen1 =()=>{
  
  const filtering=(array)=>{
   var result = [];
+  if(array[0]!==""){
     data.reduce(function(res, value) { 
     if (!res[value.email+value.type] ) {
       res[value.email+value.type] = { email: value.email, points: 0,citations:0,type:value.type,name:value.name,timestamp:value.timestamp};  
@@ -60,10 +62,13 @@ var backToScreen1 =()=>{
     return res;
   }, {});
   console.log("this is result",result);
-  
-
+}
+   if(result.length==0){
+    var copy=[...data];
+   }
+    else{
   var copy=[...result];
-  
+    }
   if(array[0]===""){
 
   }
@@ -168,24 +173,27 @@ changeApiData({data:[...copy]})
    }
    
    
-if(array1[0]==="" && array1[1]==""){
-  var defaultresult = [];
-  data.reduce(function(res, value) { 
-  if (!res[value.email] ) {
-    res[value.email] = { email: value.email, points: 0,citations:0,type:value.type,name:value.name,timestamp:value.timestamp};  
-    defaultresult.push(res[value.email])  
-  }
-  if(value.citationType=="c")
-  {
-  res[value.email].citations += 1;
-  }
-  else{
-  res[value.email].points += value.points;
-  } 
-  return res;
-}, {});
-console.log("this isdefault result",defaultresult);
-apidata.data=[...defaultresult]
+
+
+   if(array[0]=="")
+   {
+   var defaultresult = [];
+    data.reduce(function(res, value) { 
+    if (!res[value.email] ) {
+      res[value.email] = { email: value.email, points: 0,citations:0,type:value.type,name:value.name,timestamp:value.timestamp};  
+      defaultresult.push(res[value.email])  
+    }
+    if(value.citationType=="c")
+    {
+    res[value.email].citations += 1;
+    }
+    else{
+    res[value.email].points += value.points;
+    } 
+    return res;
+  }, {});
+  console.log("this isdefault result",defaultresult);
+  apidata.data=[...defaultresult];
 }
 
   

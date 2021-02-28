@@ -168,7 +168,25 @@ changeApiData({data:[...copy]})
    }
    
    
-
+if(array1[0]==="" && array1[1]==""){
+  var defaultresult = [];
+  data.reduce(function(res, value) { 
+  if (!res[value.email] ) {
+    res[value.email] = { email: value.email, points: 0,citations:0,type:value.type,name:value.name,timestamp:value.timestamp};  
+    defaultresult.push(res[value.email])  
+  }
+  if(value.citationType=="c")
+  {
+  res[value.email].citations += 1;
+  }
+  else{
+  res[value.email].points += value.points;
+  } 
+  return res;
+}, {});
+console.log("this isdefault result",defaultresult);
+apidata.data=[...defaultresult]
+}
 
   
 

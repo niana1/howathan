@@ -13,11 +13,17 @@ import axios from 'axios';
 // import {Dropdown,DropdownButton} from 'react-bootstrap';
 
 function Profile({email,backFunction}) {
-   let  backButtonClicked=()=>{
+      const[recognitions,setRecognitions]=useState("");
+      axios.get("https://01f8e0a9ea96.ngrok.io/getCitationByEmail?email="+email).then((res)=>{
+        console.log('Screen2data',res.data);  
+      })
+     let  backButtonClicked=()=>{
        console.log(email)
        console.log(typeof(backFunction))
         backFunction();
     }
+
+  
 
     // const data = [{​​​​​​​​​​​​​
     //         "_id" : "6039f69744b2e93592c43479",

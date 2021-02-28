@@ -38,12 +38,13 @@ const FilterBar = (props) => {
       title={selectedCategory}
       id="dropdown-menu-align-right"
       onSelect={handleselectorCategory}
-      >
+      >       <Dropdown.Item eventKey="By Category">By Category</Dropdown.Item>
               <Dropdown.Item eventKey="Learning Mindset">Learning Mindset</Dropdown.Item>
               <Dropdown.Item eventKey="Engaging with Openness">Engaging with Openness</Dropdown.Item>
               <Dropdown.Item eventKey="Inclusive Collaboration">Inclusive Collaboration</Dropdown.Item>
               <Dropdown.Item eventKey="Partnering for Client Impact">Partnering for Client Impact</Dropdown.Item>
               <Dropdown.Item eventKey="Embracing the Future">Embracing the Future</Dropdown.Item>
+              <Dropdown.Item eventKey="Recognition">Recognition</Dropdown.Item>
              </DropdownButton>
 
              <DropdownButton
@@ -55,6 +56,7 @@ const FilterBar = (props) => {
         >
               {/* <Dropdown.Item eventKey="3 Months">3 Months</Dropdown.Item>
               <Dropdown.Item eventKey="6 Months">6 Months</Dropdown.Item> */}
+              <Dropdown.Item eventKey="By Time">By Time</Dropdown.Item>
               <Dropdown.Item eventKey="Current Month">Current Month</Dropdown.Item>
               <Dropdown.Item eventKey="Current Year">Current Year</Dropdown.Item>
              </DropdownButton>

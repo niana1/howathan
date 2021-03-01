@@ -5,6 +5,8 @@ import { Button } from 'bootstrap';
 import '../profile/index.css';
 import SingleCitation from './singlecitation';
 import axios from 'axios';
+import PointsSection from './pointsSection';
+import {Table} from "react-bootstrap";
 // import ReactRoundedImage from "react-rounded-image";
 // import { Navbar } from 'react-bootstrap';
 // import GenerateTableOfMeetings from '../../GenerateTable';
@@ -46,7 +48,6 @@ if(apiData.data.length==0){
     return(<ProfileChild 
       backFunction={backFunction}
       apiData={apiData.data}
-      email={email}
       />)
   }
 
@@ -58,10 +59,9 @@ export default Profile;
 
 
 
-function ProfileChild({email,backFunction,apiData}){
+function ProfileChild({backFunction,apiData}){
 
   let  backButtonClicked=()=>{
-     console.log(email)
     console.log(typeof(backFunction))
      backFunction();
  }
@@ -130,11 +130,11 @@ function ProfileChild({email,backFunction,apiData}){
  ];
  data=[...apiData]
 var rows=[];
+var pointsarray=[];
  const RecognitionResult=()=>{
    for(var i=0;i<data.length;i++){
-   if(email==data[i].toEmail){
      if(data[i].points==0){
-       console.log("inside recognition result",email);
+       console.log("inside recognition result",data[i].toEmail);
        rows.push(
      //     <tr className="citation-wrapper">
      //    <td className="cell-wrapper"> {data[i].citation}  </td>
@@ -143,7 +143,13 @@ var rows=[];
      // </tr>);
      <SingleCitation key={i} data={data[i]} />)
      }
-   }
+     if(data[i].points!==0){
+       console.log("points:",data[i].points);
+       pointsarray.push(
+         <PointsSection key={i} data={data[i]}/>
+       )
+     }
+   
    }
 
  }
@@ -152,20 +158,19 @@ return (
  <div className="app-wrapper">
  <Navigation/> 
    <form className="form-container">
-     <h3>Your Rewards</h3>
-   <div className="trophy-container">
-     <p>
+     <h3 style={{paddingLeft:"60px"}}>Your Ponits</h3>
+   <div >
+   {RecognitionResult()}
+        <div>{pointsarray}</div>
+
+     {/* <div>{pointsarray}</div> */}
+     {/* <p>
        Trophies Earned: 50 x  <img 
      width="40"
      height="40"
      src="/images/trophy.png"
    ></img>
-       </p>
-   <p>Trophies Left for this month: 10 x <img 
-     width="40"
-     height="40"
-     src="/images/trophy.png"
-   ></img></p>
+       </p> */}
    </div>
    <div style={{paddingTop:"30px"}}>
    <button onClick={backButtonClicked}>Go back to Screen1!</button>
@@ -174,7 +179,6 @@ return (
    <div className="form-review">
      <h3 style={{paddingLeft:"400px"}}>Recognitions</h3>
      <div>
-     {RecognitionResult()}
      <div>{rows}</div>
    </div>
    {/* <div className="recognition-container">

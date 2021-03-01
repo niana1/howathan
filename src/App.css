@@ -76,21 +76,21 @@
 .app-wrapper {
   display: flex;
   justify-content: space-around;
-  padding: 110px 0;
+  padding: 100px 30px;
   background: #E5E5E5;
 }
 
 .form-container
- {  min-height: 80vh;
+ {  min-height: auto;
   padding-top: 10px;
-  width: 17%;
+  width: 20%;
   padding-left: 20px;
   border-radius: 10px;
   background: #fff;
 }
 
 .form-review {
-  min-height: 80vh;
+  min-height: auto;
   padding-top: 10px;
   width: 71%;
   padding-left: 20px;
@@ -107,22 +107,25 @@
 }
 
 .trophy-container
- {  min-height: 10vh;
+ {  min-height: 15vh;
   padding-top: 10px;
   width: 95%;
   padding-left: 8px;
   padding-right: 5px;
-  border-radius: 2px;
-  background: #ebeef0;
+  border-radius: 20px;
+  background: #c9d8e2;
+  margin:5px;
   
 }
 
 .recognition-container
- {  min-height: 50vh;
-  padding-top: 30px;
-  width: 95%;
+ {  min-height: auto;
+  padding-top: 20px;
+  padding-bottom: 40px;
   padding-left: 8px;
-  padding-right: 5px;
-  border-radius: 2px;
-  background: #dfdfdf;
+  padding-right: 8px;
+  border-radius: 10px;
+  background: #b7ddad;
+  border-width: 30px;
+  margin:30px;
 }

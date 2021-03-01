@@ -11,8 +11,23 @@ var onClickHandler =(email)=>{
 
 
   const rows=[];
+  response.sort((citation1, citation2) => {
+        if (citation1.points == citation2.points) {
+          console.log(citation1.citations,citation2.citations);
+          if(citation1.citations > citation2.citations){
+            console.log('in sorting citations');
+          return -1;
+        }
+        else
+        return 1;
+        }
+        if (citation1.points > citation2.points) {
+          return -1;
+        }
+      }
+  );
+
   for (var i=0;i<response.length;i++){
-    
     console.log(response[i])
   rows.push(
     <RowData 

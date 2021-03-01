@@ -13,7 +13,7 @@ import Profile from './componets/profile/index';
 import { removeData } from 'jquery';
 function App({data}) {
 
-  const [profileScreen,changeScreen]=useState({email:"",flag:false});
+  const [profileScreen,changeScreen]=useState({email:"",totalPoints:"",flag:false});
   const [array1,setArray]=useState({array:["",""]})
   const [apidata,changeApiData]=useState({data:[...data]});
 
@@ -176,8 +176,11 @@ changeApiData({data:[...copy]})
    
    if(array[0]=="")
    {
+     if(array[0]=="" && array[1]==""){
+       apidata.data=[...data]
+     }
    var defaultresult = [];
-    data.reduce(function(res, value) { 
+    apidata.data.reduce(function(res, value) {
     if (!res[value.email] ) {
       res[value.email] = { email: value.email, points: 0,citations:0,type:value.type,name:value.name,timestamp:value.timestamp};  
       defaultresult.push(res[value.email])  
@@ -194,6 +197,8 @@ changeApiData({data:[...copy]})
   console.log("this isdefault result",defaultresult);
   apidata.data=[...defaultresult];
 }
+
+
   
 
   return (

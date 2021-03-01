@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 var  func1=()=>{
   console.log("in funcccc")
-   axios.get(`https://01f8e0a9ea96.ngrok.io/getFilter`).then((res)=>{
+   axios.get(`https://71fd16820ca7.ngrok.io/getFilter`).then((res)=>{
      console.log("--------")
      console.log(res.data)
      ReactDOM.render(

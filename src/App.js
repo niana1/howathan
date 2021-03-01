@@ -17,6 +17,7 @@ function App({data}) {
   const [array1,setArray]=useState({array:["",""]})
   const [apidata,changeApiData]=useState({data:[...data]});
 
+  console.log("App rendered")
  var  changeScreenfunction =(email) =>{
     changeScreen({email:email,flag:true})
   }
@@ -44,6 +45,7 @@ var backToScreen1 =()=>{
  
  
  const filtering=(array)=>{
+   console.log("in filtering+++++++++")
   var result = [];
   if(array[0]!==""){
     data.reduce(function(res, value) { 
@@ -169,7 +171,9 @@ changeApiData({data:[...copy]})
       array[1]=e;
     }
     filtering(array)
+    console.log("after clicking function")
     setArray({array:array})
+    console.log("after array got changes")
    }
    
    
@@ -177,8 +181,11 @@ changeApiData({data:[...copy]})
 
    if(array[0]=="")
    {
+     if(array[0]=="" && array[1]==""){
+       apidata.data=[...data]
+     }
    var defaultresult = [];
-    data.reduce(function(res, value) { 
+    apidata.data.reduce(function(res, value) { 
     if (!res[value.email] ) {
       res[value.email] = { email: value.email, points: 0,citations:0,type:value.type,name:value.name,timestamp:value.timestamp};  
       defaultresult.push(res[value.email])  

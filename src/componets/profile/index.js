@@ -23,7 +23,7 @@ function Profile({email,backFunction}) {
  console.log("----------")
 
 if(apiData.data.length==0){
-  axios.get("https://01f8e0a9ea96.ngrok.io/getCitationByEmail?email="+email).then((res)=>{
+  axios.get("https://71fd16820ca7.ngrok.io/getCitationByEmail?email="+email).then((res)=>{
     console.log('Screen2data',res.data); 
    changeApiData({data:[...res.data]})
   // changeCall(true)

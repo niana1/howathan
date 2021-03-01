@@ -17,11 +17,11 @@ function App({data}) {
   const [array1,setArray]=useState({array:["",""]})
   const [apidata,changeApiData]=useState({data:[...data]});
 
- var  changeScreenfunction =(email) =>{
-    changeScreen({email:email,flag:true})
+ var  changeScreenfunction =(email,totalPoints) =>{
+    changeScreen({email:email,totalPoints:totalPoints,flag:true})
   }
 var backToScreen1 =()=>{
-  changeScreen({email:"",flag:false})
+  changeScreen({email:"",totalPoints:"",flag:false})
 }
 
   
@@ -30,6 +30,7 @@ var backToScreen1 =()=>{
    console.log("should come here ")
    console.log(profileScreen.email)
    return(<Profile
+     totalPoints={profileScreen.totalPoints}
      email={profileScreen.email}
      backFunction={backToScreen1}
      />

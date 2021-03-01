@@ -4,9 +4,9 @@ import {Table} from "react-bootstrap";
 export default function LeaderBoard({response,changeScreenfunction}) {
   var data=[...response]
 
-var onClickHandler =(email)=>{
-  console.log(email,"------------------>>>>")
-  changeScreenfunction(email)
+var onClickHandler =(email,totalPoints)=>{
+  console.log(email,"------------------>>>>"+totalPoints)
+  changeScreenfunction(email,totalPoints)
 }
 
 
@@ -42,6 +42,7 @@ var onClickHandler =(email)=>{
   
 
   return (
+    <div style={{padding:"0px 50px 0px 50px" }}>
     <Table 
     responsive striped bordered hover variant="light">
         <thead >
@@ -53,6 +54,7 @@ var onClickHandler =(email)=>{
         </thead>
         <tbody>{rows}</tbody>
       </Table>
+      </div>
   );
 }
 
@@ -60,7 +62,7 @@ var onClickHandler =(email)=>{
 function RowData({row,onClickHandler,index}){
 
   var onClickHandlerFunction =()=> {
-    onClickHandler(row.email)
+    onClickHandler(row.email,row.points)
   }
   return(<tr key={index} onClick={onClickHandlerFunction}>
      <td> {row.name}  </td>

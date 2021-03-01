@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 var  func1=()=>{
   console.log("in funcccc")
-   axios.get(`https://71fd16820ca7.ngrok.io/getFilter`).then((res)=>{
+   axios.get(`https://8d38df85a25d.ngrok.io/getFilter`).then((res)=>{
      console.log("--------")
      console.log(res.data)
      ReactDOM.render(
@@ -40,10 +40,46 @@ document.getElementById('root')
 // },
 // {
 //   "id": "60392c5ba968fe2acaee0aac",
+//   "name": "akhil",
+//   "email": "akhil@gmail.com",
+//   "citationType": "p",
+//   "points": 20,
+//   "timestamp": "2021-02-26T17:14:03.955+00:00",
+//   "type": "client impact"
+// },
+// {
+//   "id": "60392c5ba968fe2acaee0aac",
 //   "name": "sai",
 //   "email": "napa.manoj@publicisgroupe.net",
 //   "citationType": "p",
-//   "points": 8,
+//   "points": 15,
+//   "timestamp": "2021-02-26T17:14:03.955+00:00",
+//   "type": "client impact"
+// },
+// {
+//   "id": "60392c5ba968fe2acaee0aac",
+//   "name": "riya",
+//   "email": "riya@publicisgroupe.net",
+//   "citationType": "p",
+//   "points": 30,
+//   "timestamp": "2021-02-26T17:14:03.955+00:00",
+//   "type": "client impact"
+// },
+// {
+//   "id": "60392c5ba968fe2acaee0aac",
+//   "name": "suchi",
+//   "email": "suchi@publicisgroupe.net",
+//   "citationType": "p",
+//   "points": 30,
+//   "timestamp": "2021-02-26T17:14:03.955+00:00",
+//   "type": "client impact"
+// },
+// {
+//   "id": "60392c5ba968fe2acaee0aac",
+//   "name": "suchi",
+//   "email": "suchi@publicisgroupe.net",
+//   "citationType": "c",
+//   "points": 0,
 //   "timestamp": "2021-02-26T17:14:03.955+00:00",
 //   "type": "client impact"
 // }

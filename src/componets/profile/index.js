@@ -13,7 +13,7 @@ import {Table} from "react-bootstrap";
 // import LeaderBoard from './GenerateTable';
 // import {Dropdown,DropdownButton} from 'react-bootstrap';
 
-function Profile({email,backFunction}) {
+function Profile({email,totalPoints,backFunction}) {
 
 
   const[apiData,changeApiData]=useState({data:[]})
@@ -25,7 +25,7 @@ function Profile({email,backFunction}) {
  console.log("----------")
 
 if(apiData.data.length==0){
-  axios.get("https://71fd16820ca7.ngrok.io/getCitationByEmail?email="+email).then((res)=>{
+  axios.get("https://8d38df85a25d.ngrok.io/getCitationByEmail?email="+email).then((res)=>{
     console.log('Screen2data',res.data); 
    changeApiData({data:[...res.data]})
   // changeCall(true)
@@ -48,6 +48,7 @@ if(apiData.data.length==0){
     return(<ProfileChild 
       backFunction={backFunction}
       apiData={apiData.data}
+      totalPoints={totalPoints}
       />)
   }
 
@@ -59,7 +60,7 @@ export default Profile;
 
 
 
-function ProfileChild({backFunction,apiData}){
+function ProfileChild({backFunction,apiData,totalPoints}){
 
   let  backButtonClicked=()=>{
     console.log(typeof(backFunction))
@@ -158,7 +159,8 @@ return (
  <div className="app-wrapper">
  <Navigation/> 
    <form className="form-container">
-     <h3 style={{paddingLeft:"60px"}}>Your Ponits</h3>
+     <h3 style={{textAlign:"center"}}>Trophy Points </h3>
+     <h5>total Points: {totalPoints}</h5>
    <div >
    {RecognitionResult()}
         <div>{pointsarray}</div>
@@ -177,7 +179,7 @@ return (
    </div>
    </form>
    <div className="form-review">
-     <h3 style={{paddingLeft:"400px"}}>Recognitions</h3>
+     <h3 style={{ textAlign:"center"}}>Recognitions</h3>
      <div>
      <div>{rows}</div>
    </div>

@@ -173,7 +173,6 @@ changeApiData({data:[...copy]})
    }
    
    
-
    if(array[0]=="")
    {
    var defaultresult = [];

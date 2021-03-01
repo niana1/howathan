@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 var  func1=()=>{
   console.log("in funcccc")
-   axios.get(`https://01f8e0a9ea96.ngrok.io/getFilter`).then((res)=>{
+   axios.get(`https://71fd16820ca7.ngrok.io/getFilter`).then((res)=>{
      console.log("--------")
      console.log(res.data)
      ReactDOM.render(
@@ -16,10 +16,19 @@ var  func1=()=>{
   );
     // changeApiData({data:[...res.data]})
    }).catch((e)=>{
-       console.log("dell")
+       console.log("error in api")
+       ReactDOM.render(
+        <h1>Error While Loading....</h1> ,
+      document.getElementById('root')
+    );
    })
  }
  func1();
+ ReactDOM.render(
+  <h1>Loading....</h1>,
+document.getElementById('root')
+);
+
 // const data=[  {
 //   "id": "60392bb6a968fe2acaee0aa9",
 //   "name": "sai",

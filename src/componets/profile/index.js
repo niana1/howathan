@@ -25,7 +25,7 @@ function Profile({email,totalPoints,backFunction}) {
  console.log("----------")
 
 if(apiData.data.length==0){
-  axios.get("https://8d38df85a25d.ngrok.io/getCitationByEmail?email="+email).then((res)=>{
+  axios.get("https://e8ee3e144c54.ngrok.io/getCitationByEmail?email="+email).then((res)=>{
     console.log('Screen2data',res.data); 
    changeApiData({data:[...res.data]})
   // changeCall(true)
@@ -48,7 +48,6 @@ if(apiData.data.length==0){
     return(<ProfileChild 
       backFunction={backFunction}
       apiData={apiData.data}
-      totalPoints={totalPoints}
       />)
   }
 
@@ -60,7 +59,7 @@ export default Profile;
 
 
 
-function ProfileChild({backFunction,apiData,totalPoints}){
+function ProfileChild({backFunction,apiData}){
 
   let  backButtonClicked=()=>{
     console.log(typeof(backFunction))
@@ -130,6 +129,10 @@ function ProfileChild({backFunction,apiData,totalPoints}){
  }
  ];
  data=[...apiData]
+ var totalPoints=0;
+   data.forEach((citation) => {
+    totalPoints+=citation.points;
+  });
 var rows=[];
 var pointsarray=[];
  const RecognitionResult=()=>{

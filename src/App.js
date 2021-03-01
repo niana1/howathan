@@ -29,6 +29,7 @@ var backToScreen1 =()=>{
  if(profileScreen.flag===true){
    console.log("should come here ")
    console.log(profileScreen.email)
+
    return(<Profile
      totalPoints={profileScreen.totalPoints}
      email={profileScreen.email}
